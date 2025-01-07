@@ -1,0 +1,1 @@
+cmake -Bbuild -DCMAKE_INSTALL_PREFIX=install && cmake --build build --config Release && cmake --install build --config Release && python setup_win32.py sdist bdist_wheel

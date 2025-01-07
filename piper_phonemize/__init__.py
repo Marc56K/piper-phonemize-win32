@@ -3,6 +3,13 @@ from enum import Enum
 from pathlib import Path
 from typing import Dict, List, Optional, Union
 
+import platform
+if platform.system() == 'Windows':
+    import os
+    package_path = Path(__file__).parent.absolute()
+    os.add_dll_directory(str(package_path))
+    os.add_dll_directory(str(package_path.parent))
+
 from piper_phonemize_cpp import (
     phonemize_espeak as _phonemize_espeak,
     phonemize_codepoints as _phonemize_codepoints,
