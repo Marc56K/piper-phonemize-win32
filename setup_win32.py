@@ -8,7 +8,7 @@ import shutil
 _DIR = Path(__file__).parent
 _INSTALL_DIR = _DIR / "install"
 
-__version__ = "1.2.0"
+__version__ = "1.2.1"
 
 ext_modules = [
     Pybind11Extension(
@@ -34,6 +34,8 @@ shutil.copytree(_INSTALL_DIR / "share" / "espeak-ng-data", _DST_DIR / "espeak-ng
 shutil.copy(_INSTALL_DIR / "share" / "libtashkeel_model.ort", _DST_DIR / "libtashkeel_model.ort")
 shutil.copy(_INSTALL_DIR / "bin" / "espeak-ng.dll", _DST_DIR / "espeak-ng.dll")
 shutil.copy(_INSTALL_DIR / "bin" / "piper_phonemize.dll", _DST_DIR / "piper_phonemize.dll")
+shutil.copy(_INSTALL_DIR / "lib" / "onnxruntime.dll", _DST_DIR / "onnxruntime.dll")
+shutil.copy(_INSTALL_DIR / "lib" / "onnxruntime_providers_shared.dll", _DST_DIR / "onnxruntime_providers_shared.dll")
 
 setup(
     name="piper_phonemize",
@@ -48,6 +50,8 @@ setup(
         "piper_phonemize": [
             str(_DST_DIR / "espeak-ng.dll"),
             str(_DST_DIR / "piper_phonemize.dll"),
+            str(_DST_DIR / "onnxruntime.dll"),
+            str(_DST_DIR / "onnxruntime_providers_shared.dll"),
         ]
     },
     include_package_data=True,
